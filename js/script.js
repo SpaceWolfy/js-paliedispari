@@ -18,7 +18,6 @@ console.log(verifica);
 
 //Snack 2
 //L'utente sceglie se tirare pari o dispari
-let machine = 0;
 let pariDispari = prompt('Scegli pari o dispari');
 
 let numeroScelto;
@@ -40,10 +39,31 @@ function numeroPlayer1 (numeroScelto) {
         };
     }
 
-return numeroScelto;
+    return numeroScelto;
 }
-
 let player1 = numeroPlayer1(numeroScelto);
 console.log(player1);
 
 //Creo una funzione che generi un numero random per la macchina
+let result;
+
+function numeroMacchina (maxNum, minNum) {
+    result = Math.floor(Math.random() * ((maxNum + 1)- minNum)) + minNum;
+
+    return result
+};
+let machine = numeroMacchina(1, 5);
+
+if (pariDispari == 'pari' && machine == 2 || machine == 4) {
+    machine += 1;
+}
+
+if (pariDispari == 'dispari' && machine == 3 || machine == 5) {
+    machine -= 1;
+}
+
+if (pariDispari == 'dispari' && machine == 1) {
+    machine += 1;
+}
+console.log(machine);
+console.log(pariDispari);
