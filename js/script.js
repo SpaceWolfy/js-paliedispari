@@ -13,4 +13,4 @@ function verificaPal(answer, palindroma) {
 }
 
 let verifica = verificaPal(answer, palindroma);
-
+console.log(verifica)
