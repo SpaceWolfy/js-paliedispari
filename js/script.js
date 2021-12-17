@@ -33,7 +33,7 @@ function numeroPlayer1 (numeroScelto) {
     }
 
     return numeroScelto;
-}
+};
 let player1Num = numeroPlayer1(numeroScelto);
 console.log(player1Num);
 
@@ -60,3 +60,101 @@ function winSituation (sum) {
 }
 
 let win = winSituation (sum);
+
+
+//snack 1 soluzione Ottavio:
+//metto sempre prima le funzioni in una pagina:
+//l'is indica di prassi che ritorna true o false
+function isPalindroma(word) {
+
+    let reverse = '';
+    /* 
+    Voglio creare dalla parola dritta il suo reverso:  
+    il -1 serve a partire sempre dalll'ultima lettera.
+    Guardare il console log per capire meglio
+    */
+    for(let i = word.lenght - 1;  i >= 0; i--) {
+        reverse += word[i];
+        console.log (reverse);
+    };
+
+    /* if(reverse === word){
+        return true;
+    } else {
+        return false;
+    }; */
+
+    //L'if sopra si può scrivere anche così
+
+    /* if(reverse === word){
+        return true;
+    };
+
+    return false; */
+
+    //L'if sopra si può scrivere anche così
+
+    return reverse === word;
+};
+
+const parolaUtente = prompt('inserisci una parola');
+//se la parola inserita dall'utente ispalindroma 
+//allora stiamo nella situazione true e gli dò l'argomento
+//if isPalindroma(parolaUtente) === true
+if (isPalindroma(parolaUtente)) { //if return -> (true) {}
+    console.log('è palindroma');
+} else { //if return -> (false) {}
+    console.log('non è palindroma');
+};
+
+
+//snack 2 soluzione Ottavio:
+function randomNumb(max, min) {
+    result = Math.floor(Math.random() * ((max + 1)- min)) + min;
+    return result;
+};
+
+function isPari(num) {
+
+    return num % 2 === 0;
+};
+
+//semplifico ulteriormente l'if sotto mettendolo in una funzione: 
+function userWin(totalNumber, userSelection) {
+    //chiamo una funzione dentro un'altra funzione
+    return (isPari(totalNumber) && userSelection === 'pari' || !isPari(totalNumber) && userSelection === 'dispari');
+}
+
+const userChoice = prompt('Scegli, pari o dispari');
+const userNumber = prompt('Inserisci un numero da 1 a 5');
+const machineNumber = randomNumb(1, 5);
+
+const total = userNumber + machineNumber;
+
+/* 
+if (isPari(total) && userChoice === 'pari') {
+    console.log('Hai vinto!');
+} else if (isPari(total) && userChoice !== 'pari') {
+    console.log('Hai perso!');
+} else if (!isPari(total) && userChoice === 'dispari') {
+    console.log('Hai vinto!');
+} else {
+    console.log('Hai perso');
+};
+ */
+
+//semplifichiamo l'if:
+/* 
+if (isPari(total) && userChoice === 'pari' || !isPari(total) && userChoice === 'dispari') {
+    console.log('Hai vinto');
+} else {
+    console.log('Hai perso');
+} 
+*/
+
+//semplifico ancora l'if: 
+if (userWin(total, userChoice)) {
+    console.log('Hai vinto');
+} else {
+    console.log('Hai perso');
+};
